@@ -3,11 +3,41 @@
   <head>
     <meta charset="utf-8" />
     <title>popbox example</title>
+    <style>
+      body {
+        width: 500px;
+        margin: 100px auto;
+      }
+
+      a[data-popbox] {
+        position: relative;
+      }
+
+      .Popbox {
+        background: lightBlue;
+        padding: 4px;
+      }
+    </style>
   </head>
   <body>
+
+    <a href="#" class="hover-popbox" data-popbox data-popbox-text="This is a tooltip" data-action="toggle" data-popbox-direction="left"/>Tooltip 1</a>
+    <a href="#" class="hover-popbox-title" data-popbox data-popbox-text="This is a tooltip" data-popbox-title="Awesome title" data-action="toggle" data-popbox-direction="up"/>Tooltip 2</a>
+    <a href="#" class="custom-popbox" data-popbox data-popbox-text="This is a custom tooltip" data-popbox-el=".custom-popbox-content" data-action="toggle" data-popbox-direction="right"/>Custom</a>
+    <a href="#" class="hover-popbox" data-popbox data-popbox-text="This is a tooltip" data-action="toggle" data-popbox-direction="down"/>Tooltip 1</a>
+    <div class="custom-popbox-content" style="display: none;">
+      <div class="content">
+        <strong>This is a custom title</strong><br>
+        <p>This is some more custom text that can probably extend quite a ways.</p>
+      </div>
+    </div>
 
     <script src="../components/jquery/jquery.js"></script>
     <script src="../components/fidel/dist/fidel.js"></script>
     <script src="../dist/popbox.js"></script>
+
+    <script>
+      $('a[data-popbox]').popbox();
+    </script>
   </body>
 </html>
