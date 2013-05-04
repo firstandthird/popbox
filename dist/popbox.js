@@ -10,6 +10,7 @@
     defaults: {
       containerClass: 'Popbox',
       direction: 'left',
+      directionOffset: 10,
       hideFadeDuration: 100,
       showFadeDuration: 50,
       hideTimeout: 500, 
@@ -114,7 +115,7 @@
       switch(this.direction) {
         case 'left':
           this.template.css({
-            left: elOffset.left - this.template.outerWidth(),
+            left: elOffset.left - this.template.outerWidth() - this.directionOffset,
             top: (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2)
           });
           this.template.addClass('left');
@@ -122,13 +123,13 @@
         case 'up':
           this.template.css({
             left: (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2),
-            top: elOffset.top  - this.template.outerHeight()
+            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
           });
           this.template.addClass('up');
           break;
         case 'right':
           this.template.css({
-            left: elOffset.left + this.el.outerWidth(),
+            left: elOffset.left + this.el.outerWidth() + this.directionOffset,
             top: (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2)
           });
           this.template.addClass('right');
@@ -136,7 +137,7 @@
       case 'down':
           this.template.css({
             left: (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2),
-            top: elOffset.top  + this.el.outerHeight()
+            top: elOffset.top  + this.el.outerHeight() + this.directionOffset
           });
           this.template.addClass('down');
           break;
