@@ -86,10 +86,10 @@
 
       this.hideTimer = setTimeout(this.proxy(function() {
         this.template.fadeOut(this.hideFadeDuration, this.proxy(this.reset));
-      }), this.hideTimeout);
 
-      this.open = false;
-      this.el.trigger('hide');
+        this.open = false;
+        this.el.trigger('hide');
+      }), this.hideTimeout);
     },
 
     toggle: function () {
