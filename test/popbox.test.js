@@ -6,9 +6,13 @@ suite('popbox', function() {
       tooltipCustom;
 
   setup(function() {
-    tooltip = $('.hover-popbox');
-    tooltipTitle = $('.hover-popbox-title');
-    tooltipCustom = $('.custom-popbox');
+    tooltip = $('.hover-popbox').clone();
+    tooltipTitle = $('.hover-popbox-title').clone();
+    tooltipCustom = $('.custom-popbox').clone();
+
+    tooltip.removeData();
+    tooltipTitle.removeData();
+    tooltipCustom.removeData();
   });
 
   suite('init', function() {

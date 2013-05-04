@@ -48,8 +48,14 @@
       this.template.remove();
     },
 
-    show: function () {
+    show: function (e) {
       if(this.hoveringOverTooltip) return;
+
+      if(typeof e !== 'undefined' && this.forcedOpen) return;
+
+      if(typeof e === 'undefined') {
+        this.forcedOpen = true;
+      }
 
       clearTimeout(this.hideTimer);
 
@@ -67,16 +73,23 @@
       this.el.trigger('show');
     },
 
-    hide: function () {
+    hide: function (e) {
       if(this.hoveringOverTooltip) return;
 
       if(!this.open) return;
 
+      if(typeof e !== 'undefined' && this.forcedOpen) return;
+
+      if(typeof e === 'undefined') {
+        this.forcedOpen = false;
+      }
+
       this.hideTimer = setTimeout(this.proxy(function() {
-        this.open = false;
         this.template.fadeOut(this.hideFadeDuration, this.proxy(this.reset));
-        this.el.trigger('hide');
       }), this.hideTimeout);
+
+      this.open = false;
+      this.el.trigger('hide');
     },
 
     toggle: function () {
