@@ -36,6 +36,13 @@ module.exports = function(grunt) {
         dest: 'dist/popbox.min.js'
       }
     },
+    less: {
+      styles: {
+        files: {
+          'dist/popbox.css': 'lib/popbox.less'
+        }
+      }
+    },
     watch: {
       main: {
         files: '<%= jshint.main %>',
@@ -47,6 +54,10 @@ module.exports = function(grunt) {
           'test/index.html'
         ],
         tasks: ['default', 'mocha']
+      },
+      styles: {
+        files: 'lib/*.less',
+        tasks: ['styles']
       }
     },
     mocha: {
@@ -90,11 +101,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-reloadr');
   grunt.loadNpmTasks('grunt-plato');
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'mocha']);
-  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch:main']);
+  grunt.registerTask('default', ['styles', 'jshint', 'concat', 'uglify', 'mocha']);
+  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch']);
   grunt.registerTask('ci', ['connect:server', 'watch:ci']);
   grunt.registerTask('reports', ['plato', 'connect:plato']);
+  grunt.registerTask('styles', ['less']);
 };

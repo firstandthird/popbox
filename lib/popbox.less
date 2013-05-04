@@ -1,0 +1,27 @@
+@import "../components/baseline/lib/arrows";
+
+@backgroundColor: rgba(0,0,0,.80);
+@textColor: #fff;
+
+.Popbox {
+  background: @backgroundColor;
+  color: #fff;
+  border-radius: 4px;
+  padding: 17px;
+
+  &.left {
+    .bl-arrow-right(@backgroundColor);
+  }
+
+  &.up {
+    .bl-arrow-bottom(@backgroundColor);
+  }
+
+  &.right {
+    .bl-arrow-left(@backgroundColor);
+  }
+
+  &.down {
+    .bl-arrow-top(@backgroundColor);
+  }
+}
