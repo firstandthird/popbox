@@ -72,3 +72,7 @@
   border-right: 10px solid transparent;
   border-bottom: 10px solid rgba(0, 0, 0, 0.8);
 }
+.Popbox .title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
