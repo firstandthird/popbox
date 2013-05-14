@@ -1,4 +1,5 @@
 $.fn.popbox.defaults.hideTimeout = 10;
+$.fn.popbox.defaults.hideFadeDuration = 10;
 
 suite('popbox', function() {
   var tooltip,
@@ -13,6 +14,8 @@ suite('popbox', function() {
     tooltip.removeData();
     tooltipTitle.removeData();
     tooltipCustom.removeData();
+
+    $('.Popbox').remove();
   });
 
   suite('init', function() {
@@ -54,9 +57,9 @@ suite('popbox', function() {
     test('show on click', function() {
       tooltip.popbox();
 
-      tooltip.click();
+      tooltip.popbox('toggle');
 
-      assert.equal(tooltip.popbox('isOpen'), true);
+      assert.equal($('.Popbox').length, 1);
     });
 
     test('show manually', function() {
@@ -64,7 +67,7 @@ suite('popbox', function() {
 
       tooltip.popbox('show');
 
-      assert.equal(tooltip.popbox('isOpen'), true);
+      assert.equal($('.Popbox').length, 1);
     });
 
     test('show event triggered', function(done) {
@@ -87,21 +90,21 @@ suite('popbox', function() {
       tooltip.mouseleave();
 
       setTimeout(function() {
-        assert.notEqual(tooltip.popbox('isOpen'), true);
+        assert.equal($('.Popbox').length, 0);
         done();
-      }, 20);
+      }, 100);
     });
 
     test('hide on click', function(done) {
       tooltip.popbox();
 
-      tooltip.click();
-      tooltip.click();
+      tooltip.popbox('toggle');
+      tooltip.popbox('toggle');
 
       setTimeout(function() {
-        assert.notEqual(tooltip.popbox('isOpen'), true);
+        assert.equal($('.Popbox').length, 0);
         done();
-      }, 20);
+      }, 100);
     });
 
     test('hide manually', function(done) {
@@ -111,9 +114,9 @@ suite('popbox', function() {
       tooltip.popbox('hide');
 
       setTimeout(function() {
-        assert.notEqual(tooltip.popbox('isOpen'), true);
+        assert.equal($('.Popbox').length, 0);
         done();
-      }, 20);
+      }, 100);
 
     });
 
