@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     less: {
       styles: {
         files: {
-          'dist/popbox.css': 'lib/popbox.less'
+          'dist/popbox.css': 'lib/default.less'
         }
       }
     },
