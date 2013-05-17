@@ -15,7 +15,7 @@ suite('popbox', function() {
     tooltipTitle.removeData();
     tooltipCustom.removeData();
 
-    $('.Popbox').remove();
+    $('.popbox').remove();
   });
 
   suite('init', function() {
@@ -29,13 +29,13 @@ suite('popbox', function() {
     test('template without title', function() {
       tooltip.popbox();
 
-      assert.equal(tooltip.popbox('generateTemplate')[0].outerHTML, '<div class="Popbox"><div class="text">This is a tooltip</div></div>');
+      assert.equal(tooltip.popbox('generateTemplate')[0].outerHTML, '<div class="popbox"><div class="text">This is a tooltip</div></div>');
     });
 
     test('template with title', function() {
       tooltipTitle.popbox();
 
-      assert.equal(tooltipTitle.popbox('generateTemplate')[0].outerHTML, '<div class="Popbox"><div class="title">Awesome title</div><div class="text">This is a tooltip</div></div>');
+      assert.equal(tooltipTitle.popbox('generateTemplate')[0].outerHTML, '<div class="popbox"><div class="title">Awesome title</div><div class="text">This is a tooltip</div></div>');
     });
 
     test('custom template', function() {
@@ -59,7 +59,7 @@ suite('popbox', function() {
 
       tooltip.popbox('toggle');
 
-      assert.equal($('.Popbox').length, 1);
+      assert.equal($('.popbox').length, 1);
     });
 
     test('show manually', function() {
@@ -67,7 +67,7 @@ suite('popbox', function() {
 
       tooltip.popbox('show');
 
-      assert.equal($('.Popbox').length, 1);
+      assert.equal($('.popbox').length, 1);
     });
 
     test('show event triggered', function(done) {
@@ -90,7 +90,7 @@ suite('popbox', function() {
       tooltip.mouseleave();
 
       setTimeout(function() {
-        assert.equal($('.Popbox').length, 0);
+        assert.equal($('.popbox').length, 0);
         done();
       }, 100);
     });
@@ -102,7 +102,7 @@ suite('popbox', function() {
       tooltip.popbox('toggle');
 
       setTimeout(function() {
-        assert.equal($('.Popbox').length, 0);
+        assert.equal($('.popbox').length, 0);
         done();
       }, 100);
     });
@@ -114,7 +114,7 @@ suite('popbox', function() {
       tooltip.popbox('hide');
 
       setTimeout(function() {
-        assert.equal($('.Popbox').length, 0);
+        assert.equal($('.popbox').length, 0);
         done();
       }, 100);
 
