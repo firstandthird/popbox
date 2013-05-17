@@ -1,19 +1,19 @@
-.Popbox {
+.popbox {
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: 4px;
   padding: 17px;
 }
-.Popbox.left {
+.popbox.left {
   position: relative;
 }
-.Popbox.left:after {
+.popbox.left:after {
   content: "";
   height: 0;
   width: 0;
   position: absolute;
 }
-.Popbox.left:after {
+.popbox.left:after {
   top: 50%;
   margin-top: -10px;
   right: -10px;
@@ -21,16 +21,16 @@
   border-bottom: 10px solid transparent;
   border-left: 10px solid rgba(0, 0, 0, 0.8);
 }
-.Popbox.up {
+.popbox.up {
   position: relative;
 }
-.Popbox.up:after {
+.popbox.up:after {
   content: "";
   height: 0;
   width: 0;
   position: absolute;
 }
-.Popbox.up:after {
+.popbox.up:after {
   left: 50%;
   margin-left: -10px;
   bottom: -10px;
@@ -38,16 +38,16 @@
   border-right: 10px solid transparent;
   border-top: 10px solid rgba(0, 0, 0, 0.8);
 }
-.Popbox.right {
+.popbox.right {
   position: relative;
 }
-.Popbox.right:after {
+.popbox.right:after {
   content: "";
   height: 0;
   width: 0;
   position: absolute;
 }
-.Popbox.right:after {
+.popbox.right:after {
   top: 50%;
   margin-top: -10px;
   left: -10px;
@@ -55,16 +55,16 @@
   border-bottom: 10px solid transparent;
   border-right: 10px solid rgba(0, 0, 0, 0.8);
 }
-.Popbox.down {
+.popbox.down {
   position: relative;
 }
-.Popbox.down:after {
+.popbox.down:after {
   content: "";
   height: 0;
   width: 0;
   position: absolute;
 }
-.Popbox.down:after {
+.popbox.down:after {
   left: 50%;
   margin-left: -10px;
   top: -10px;
@@ -72,7 +72,7 @@
   border-right: 10px solid transparent;
   border-bottom: 10px solid rgba(0, 0, 0, 0.8);
 }
-.Popbox .title {
+.popbox .title {
   font-size: 20px;
   margin-bottom: 10px;
 }

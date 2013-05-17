@@ -1,6 +1,6 @@
 /*!
  * popbox - Fidel Tooltip/Popover Library
- * v0.1.0
+ * v0.2.0
  * https://github.com/jgallen23/popbox
  * copyright Greg Allen 2013
  * MIT License
@@ -8,8 +8,8 @@
 (function($) {
   $.declare('popbox', {
     defaults: {
-      containerClass: 'Popbox',
-      direction: 'left',
+      containerClass: 'popbox',
+      direction: 'down',
       directionOffset: 10,
       hideFadeDuration: 100,
       showFadeDuration: 50,

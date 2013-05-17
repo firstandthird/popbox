@@ -1,4 +1,12 @@
 
+0.2.0 / 2013-05-16 
+==================
+
+  * updated test to use popbox instead of Popbox
+  * changed popbox to be a mixin and changed from Popbox to popbox default class
+  * changed grunt to watch Gruntfile.js
+  * default direction to down
+
 0.1.0 / 2013-05-14 
 ==================
 
