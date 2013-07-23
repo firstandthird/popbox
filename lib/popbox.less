@@ -1,29 +1,31 @@
 @import "../components/baseline/lib/arrows";
 
 .popbox(@backgroundColor: rgba(0, 0, 0, 0.8), @textColor: #fff) {
-  background: @backgroundColor;
-  color: #fff;
-  border-radius: 4px;
-  padding: 17px;
+  .popbox {
+    background: @backgroundColor;
+    color: #fff;
+    border-radius: 4px;
+    padding: 17px;
 
-  &.left {
-    .bl-arrow-right(@backgroundColor);
-  }
+    &.left {
+      .bl-arrow-right(@backgroundColor);
+    }
 
-  &.up {
-    .bl-arrow-bottom(@backgroundColor);
-  }
+    &.up {
+      .bl-arrow-bottom(@backgroundColor);
+    }
 
-  &.right {
-    .bl-arrow-left(@backgroundColor);
-  }
+    &.right {
+      .bl-arrow-left(@backgroundColor);
+    }
 
-  &.down {
-    .bl-arrow-top(@backgroundColor);
-  }
+    &.down {
+      .bl-arrow-top(@backgroundColor);
+    }
 
-  .title {
-    font-size: 20px;
-    margin-bottom: 10px;
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
   }
 }
