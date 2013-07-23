@@ -13,7 +13,7 @@
       directionOffset: 10,
       hideFadeDuration: 100,
       showFadeDuration: 50,
-      hideTimeout: 500, 
+      hideTimeout: 500,
       enableHover: true,
       clickToShow: true
     },
@@ -183,4 +183,8 @@
       this.el.trigger('mouseleave');
     }
   });
+
+  if(!$.popboxDisableAutoAPI) {
+    $('[data-popbox]').popbox();
+  }
 })(jQuery);
