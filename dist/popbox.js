@@ -13,7 +13,7 @@
       directionOffset: 10,
       hideFadeDuration: 100,
       showFadeDuration: 50,
-      hideTimeout: 500,
+      hideTimeout: 100,
       enableHover: true,
       clickToShow: true
     },
