@@ -1,4 +1,11 @@
 
+n.n.n / 2013-07-23 
+==================
+
+ * Included css class in mixin.
+ * Reduced default off timeout.
+ * Added auto with check if disabled.
+
 0.2.0 / 2013-05-16 
 ==================
 

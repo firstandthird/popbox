@@ -1,6 +1,6 @@
 /*!
  * popbox - Fidel Tooltip/Popover Library
- * v0.2.0
+ * v0.3.0
  * https://github.com/jgallen23/popbox
  * copyright Greg Allen 2013
  * MIT License
