@@ -21,16 +21,22 @@
   border-bottom: 10px solid transparent;
   border-left: 10px solid rgba(0, 0, 0, 0.8);
 }
-.popbox.up {
+.popbox.up,
+.popbox.left-up,
+.popbox.right-up {
   position: relative;
 }
-.popbox.up:after {
+.popbox.up:after,
+.popbox.left-up:after,
+.popbox.right-up:after {
   content: "";
   height: 0;
   width: 0;
   position: absolute;
 }
-.popbox.up:after {
+.popbox.up:after,
+.popbox.left-up:after,
+.popbox.right-up:after {
   left: 50%;
   margin-left: -10px;
   bottom: -10px;
