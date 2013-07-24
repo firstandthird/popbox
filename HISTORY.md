@@ -2,6 +2,11 @@
 n.n.n / 2013-07-23 
 ==================
 
+ * Fixed classes for left-up and right-up.
+
+n.n.n / 2013-07-23 
+==================
+
  * Added support for left-up and right-up.
 
 n.n.n / 2013-07-23 
