@@ -1,6 +1,6 @@
 /*!
  * popbox - Fidel Tooltip/Popover Library
- * v0.3.0
+ * v0.4.0
  * https://github.com/jgallen23/popbox
  * copyright Greg Allen 2013
  * MIT License
@@ -134,12 +134,26 @@
           });
           this.template.addClass('right');
           break;
-      case 'down':
+        case 'down':
           this.template.css({
             left: (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2),
             top: elOffset.top  + this.el.outerHeight() + this.directionOffset
           });
           this.template.addClass('down');
+          break;
+        case 'left-up':
+          this.template.css({
+            left: (elOffset.left) - (this.template.outerWidth() / 2),
+            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
+          });
+          this.template.addClass('up');
+          break;
+        case 'right-up':
+          this.template.css({
+            left: (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2),
+            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
+          });
+          this.template.addClass('up');
           break;
       }
     },
