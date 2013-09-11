@@ -1,16 +1,23 @@
 {
   "name": "popbox",
-  "description": "Fidel Tooltip/Popover Library",
+  "description": "Tooltip/Popover Library",
   "version": "0.4.2",
   "homepage": "https://github.com/jgallen23/popbox",
   "license": "MIT",
-  "copyright": "Greg Allen",
-  "main": "dist/popbox.js",
+  "copyright": "First + Third",
+  "main": "dist/fidel.popbox.js",
   "dependencies": {
-    "fidel": "~2.2.1",
+    "fidel": "2.*",
     "baseline": "~0.6.0"
   },
   "devDependencies": {
     "assert": "*"
-  }
+  },
+  "ignore": [
+    "test",
+    "example",
+    "lib",
+    "Gruntfile.js",
+    "package.json"
+  ]
 }

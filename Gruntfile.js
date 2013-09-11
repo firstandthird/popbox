@@ -13,17 +13,35 @@ module.exports = function(grunt) {
     jshint: {
       main: [
         'Gruntfile.js', 
-        'component.json',
+        'bower.json',
         'lib/**/*.js',
         'test/*.js'
       ]
+    },
+    bower: {
+      main: {
+        dest: 'dist/_bower.js',
+        exclude: [
+          'jquery',
+          'assert'
+        ]
+      }
     },
     concat: {
       options: {
         banner: '<%= meta.banner %>'
       },
       dist: {
-        src: 'lib/popbox.js',
+        src: [
+          'lib/popbox.js'
+        ],
+        dest: 'dist/fidel.popbox.js'
+      },
+      full: {
+        src: [
+          'dist/_bower.js',
+          'lib/popbox.js'
+        ],
         dest: 'dist/popbox.js'
       }
     },
@@ -32,9 +50,21 @@ module.exports = function(grunt) {
         banner: '<%= meta.banner %>'
       },
       dist: {
+        src: 'dist/fidel.popbox.js',
+        dest: 'dist/fidel.popbox.min.js'
+      },
+      full: {
         src: 'dist/popbox.js',
         dest: 'dist/popbox.min.js'
       }
+    },
+    clean: {
+      bower: [
+        'dist/_bower.js'
+      ],
+      dist: [
+        'dist'
+      ]
     },
     less: {
       styles: {
@@ -46,14 +76,14 @@ module.exports = function(grunt) {
     watch: {
       main: {
         files: '<%= jshint.main %>',
-        tasks: 'default' 
+        tasks: 'scripts' 
       },
-      ci: {
+      grunt: {
         files: [
-          '<%= jshint.main %>',
+          'Gruntfile.js',
           'test/index.html'
         ],
-        tasks: ['default', 'mocha']
+        tasks: 'default'
       },
       styles: {
         files: 'lib/*.less',
@@ -61,11 +91,13 @@ module.exports = function(grunt) {
       }
     },
     mocha: {
+      options: {
+        run: true,
+        growl: true,
+        reporter: 'Spec'
+      },
       all: {
-        src: 'test/index.html',
-        options: {
-          run: true
-        }
+        src: 'test/index.html'
       }
     },
     plato: {
@@ -75,17 +107,11 @@ module.exports = function(grunt) {
         }
       }
     },
-    reloadr: {
-      main: [
-        'example/*',
-        'test/*',
-        'dist/*'
-      ]
-    },
     connect: {
       server:{
-        port: 8000,
-        base: '.'
+        options: {
+          hostname: '*'
+        }
       },
       plato: {
         port: 8000,
@@ -94,20 +120,19 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
+    },
+    bytesize: {
+      scripts: {
+        src: [
+          'dist/*'
+        ]
+      }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-mocha');
-  grunt.loadNpmTasks('grunt-reloadr');
-  grunt.loadNpmTasks('grunt-plato');
-  grunt.registerTask('default', ['styles', 'jshint', 'concat', 'uglify', 'mocha']);
-  grunt.registerTask('dev', ['connect:server', 'reloadr', 'watch']);
-  grunt.registerTask('ci', ['connect:server', 'watch:ci']);
-  grunt.registerTask('reports', ['plato', 'connect:plato']);
+  require('load-grunt-tasks')(grunt);
   grunt.registerTask('styles', ['less']);
+  grunt.registerTask('scripts', ['jshint', 'bower', 'concat', 'uglify', 'clean:bower', 'mocha', 'bytesize']);
+  grunt.registerTask('default', ['styles', 'scripts']);
+  grunt.registerTask('dev', ['connect:server', 'watch']);
+  grunt.registerTask('reports', ['plato', 'connect:plato']);
 };
