@@ -1,20 +1,28 @@
 
-n.n.n / 2013-07-23 
+0.5.0 / 2013-09-10 
+==================
+
+  * updated to use oban
+  * updated for latest version of bower and grunt plugins
+  * Merge pull request #1 from Belelros/master
+  * Fix & update
+
+0.4.2 / 2013-07-23 
 ==================
 
  * Added left-up and right-up to less mixin.
 
-n.n.n / 2013-07-23 
+0.4.1 / 2013-07-23 
 ==================
 
  * Fixed classes for left-up and right-up.
 
-n.n.n / 2013-07-23 
+0.4.0 / 2013-07-23 
 ==================
 
  * Added support for left-up and right-up.
 
-n.n.n / 2013-07-23 
+0.3.0 / 2013-07-23 
 ==================
 
  * Included css class in mixin.
