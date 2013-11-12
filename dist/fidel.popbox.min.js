@@ -1,7 +1,8 @@
+
 /*!
  * popbox - Tooltip/Popover Library
- * v0.5.0
- * https://github.com/jgallen23/popbox
+ * v0.6.0
+ * https://github.com/firstandthird/popbox
  * copyright First + Third 2013
  * MIT License
 */
