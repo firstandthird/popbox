@@ -1,0 +1,5 @@
+styles:
+  options:
+    paths: 'bower_components/oban'
+  files:
+    'dist/popbox.css': 'less/default.less'

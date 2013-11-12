@@ -2,22 +2,24 @@
   "name": "popbox",
   "description": "Tooltip/Popover Library",
   "version": "0.5.0",
-  "homepage": "https://github.com/jgallen23/popbox",
+  "homepage": "https://github.com/firstandthird/popbox",
   "license": "MIT",
   "copyright": "First + Third",
   "main": "dist/fidel.popbox.js",
   "dependencies": {
-    "fidel": "2.*",
-    "oban": "~0.9.0"
+    "fidel": "2.*"
   },
   "devDependencies": {
-    "assert": "*"
+    "assert": "*",
+    "blanket": "*",
+    "oban": "~0.9.0"
   },
   "ignore": [
     "test",
     "example",
     "lib",
     "Gruntfile.js",
-    "package.json"
+    "package.json",
+    "grunt"
   ]
 }
