@@ -1,11 +1,16 @@
 @import "oban";
 
-.popbox(@backgroundColor: rgba(0, 0, 0, 0.8), @textColor: #fff) {
+.popbox(
+    @backgroundColor: rgba(0, 0, 0, 0.8),
+    @textColor: #fff,
+    @borderRadius: 4px,
+    @padding: 10px
+  ) {
   .popbox {
     background: @backgroundColor;
-    color: #fff;
-    border-radius: 4px;
-    padding: 17px;
+    color: @textColor;
+    border-radius: @borderRadius;
+    padding: @padding;
 
     &.left {
       .oban-arrow-right(@backgroundColor);
