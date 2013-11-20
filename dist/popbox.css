@@ -44,6 +44,12 @@
   border-right: 10px solid transparent;
   border-top: 10px solid rgba(0, 0, 0, 0.8);
 }
+.popbox.up.right-edge:after,
+.popbox.left-up.right-edge:after,
+.popbox.right-up.right-edge:after {
+  left: auto;
+  right: 25px;
+}
 .popbox.right {
   position: relative;
 }
@@ -61,6 +67,13 @@
   border-bottom: 10px solid transparent;
   border-right: 10px solid rgba(0, 0, 0, 0.8);
 }
+.popbox.right.left-edge:after {
+  left: 25px;
+}
+.popbox.right.right-edge:after {
+  left: auto;
+  right: 25px;
+}
 .popbox.down {
   position: relative;
 }
@@ -77,6 +90,13 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid rgba(0, 0, 0, 0.8);
+}
+.popbox.down.left-edge:after {
+  left: 25px;
+}
+.popbox.down.right-edge:after {
+  left: auto;
+  right: 25px;
 }
 .popbox .title {
   font-size: 20px;

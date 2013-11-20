@@ -11,6 +11,7 @@
     defaults: {
       containerClass: 'popbox',
       direction: 'down',
+      directionClasses: 'left left-edge up right right-edge down left-up right-up',
       directionOffset: 10,
       hideFadeDuration: 100,
       showFadeDuration: 50,
@@ -112,52 +113,61 @@
         position: 'absolute'
       });
 
+      this.template.removeClass(this.directionClasses);
+
       var elOffset = this.el.offset();
+      var left, top;
+      var right = 'auto';
 
       switch(this.direction) {
         case 'left':
-          this.template.css({
-            left: elOffset.left - this.template.outerWidth() - this.directionOffset,
-            top: (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2)
-          });
+          left = elOffset.left - this.template.outerWidth() - this.directionOffset;
+          top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
           this.template.addClass('left');
           break;
         case 'up':
-          this.template.css({
-            left: (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2),
-            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
-          });
+          left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
+          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
           this.template.addClass('up');
           break;
         case 'right':
-          this.template.css({
-            left: elOffset.left + this.el.outerWidth() + this.directionOffset,
-            top: (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2)
-          });
+          left = elOffset.left + this.el.outerWidth() + this.directionOffset;
+          top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
           this.template.addClass('right');
           break;
         case 'down':
-          this.template.css({
-            left: (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2),
-            top: elOffset.top  + this.el.outerHeight() + this.directionOffset
-          });
+          left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
+          top = elOffset.top  + this.el.outerHeight() + this.directionOffset;
           this.template.addClass('down');
           break;
         case 'left-up':
-          this.template.css({
-            left: (elOffset.left) - (this.template.outerWidth() / 2),
-            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
-          });
+          left = (elOffset.left) - (this.template.outerWidth() / 2);
+          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
           this.template.addClass('left-up');
           break;
         case 'right-up':
-          this.template.css({
-            left: (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2),
-            top: elOffset.top  - this.template.outerHeight() - this.directionOffset
-          });
+          left = (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2);
+          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
           this.template.addClass('right-up');
           break;
       }
+
+      console.log(($(window).width() - (left + this.template.outerWidth())), $(window).width());
+
+      if(($(window).width() - (left + this.template.outerWidth())) < 0) {
+        this.template.addClass('right-edge');
+        left = 'auto';
+        right = 0;
+      } else if(left < 0) {
+        this.template.addClass('left-edge');
+        left = 0;
+      }
+
+      this.template.css({
+        left: left,
+        right: right,
+        top: top
+      });
     },
 
     generateTemplate: function () {

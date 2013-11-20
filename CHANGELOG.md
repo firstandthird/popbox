@@ -1,4 +1,13 @@
 
+0.8.0 / 2013-11-20 
+==================
+
+ * Merge pull request #9 from firstandthird/feature/stay-inside-bounds
+ * Better bounds control.
+ * tweaked example to show issue
+ * Test to make tooltips stay within the window.
+ * be able to pass in arrow size
+
 0.7.0 / 2013-11-19 
 ==================
 
