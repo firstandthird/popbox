@@ -19,14 +19,32 @@
 
     &.up, &.left-up, &.right-up {
       .oban-arrow-bottom(@backgroundColor, @arrowSize);
+      &.right-edge:after {
+        left: auto;
+        right: 25px;
+      }
     }
 
     &.right {
       .oban-arrow-left(@backgroundColor, @arrowSize);
+      &.left-edge:after {
+        left: 25px
+      }
+      &.right-edge:after {
+        left: auto;
+        right: 25px;
+      }
     }
 
     &.down {
       .oban-arrow-top(@backgroundColor, @arrowSize);
+      &.left-edge:after {
+        left: 25px
+      }
+      &.right-edge:after {
+        left: auto;
+        right: 25px;
+      }
     }
 
     .title {
