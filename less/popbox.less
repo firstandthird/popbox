@@ -4,7 +4,8 @@
     @backgroundColor: rgba(0, 0, 0, 0.8),
     @textColor: #fff,
     @borderRadius: 4px,
-    @padding: 10px
+    @padding: 10px,
+    @arrowSize: 10px
   ) {
   .popbox {
     background: @backgroundColor;
@@ -13,19 +14,19 @@
     padding: @padding;
 
     &.left {
-      .oban-arrow-right(@backgroundColor);
+      .oban-arrow-right(@backgroundColor, @arrowSize);
     }
 
     &.up, &.left-up, &.right-up {
-      .oban-arrow-bottom(@backgroundColor);
+      .oban-arrow-bottom(@backgroundColor, @arrowSize);
     }
 
     &.right {
-      .oban-arrow-left(@backgroundColor);
+      .oban-arrow-left(@backgroundColor, @arrowSize);
     }
 
     &.down {
-      .oban-arrow-top(@backgroundColor);
+      .oban-arrow-top(@backgroundColor, @arrowSize);
     }
 
     .title {
