@@ -152,8 +152,6 @@
           break;
       }
 
-      console.log(($(window).width() - (left + this.template.outerWidth())), $(window).width());
-
       if(($(window).width() - (left + this.template.outerWidth())) < 0) {
         this.template.addClass('right-edge');
         left = 'auto';

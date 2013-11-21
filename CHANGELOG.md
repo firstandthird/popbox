@@ -1,4 +1,10 @@
 
+0.8.1 / 2013-11-21 
+==================
+
+ * Merge pull request #10 from firstandthird/bug/console-log
+ * Removed a console.log()
+
 0.8.0 / 2013-11-20 
 ==================
 
