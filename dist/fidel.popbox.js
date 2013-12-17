@@ -1,7 +1,7 @@
 
 /*!
  * popbox - Tooltip/Popover Library
- * v0.7.0
+ * v0.8.1
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2013
  * MIT License
@@ -40,14 +40,13 @@
 
     attachEvents: function () {
       if(this.enableHover) {
-        this.el.bind('mouseenter', this.proxy(this.show));
-        this.el.bind('mouseleave', this.proxy(this.hide));
+        this.el.bind('mouseenter.popbox', this.proxy(this.show));
+        this.el.bind('mouseleave.popbox', this.proxy(this.hide));
       }
     },
 
     reset: function () {
-      this.template.unbind('mouseenter');
-      this.template.unbind('mouseleave');
+      this.template.unbind('.popbox');
       this.template.remove();
     },
 
@@ -65,8 +64,8 @@
       if(!this.open) {
         $('body').append(this.generateTemplate());
 
-        this.template.bind('mouseenter', this.proxy(this.hoverTooltip));
-        this.template.bind('mouseleave', this.proxy(this.hoverLeaveTooltip));
+        this.template.bind('mouseenter.popbox', this.proxy(this.hoverTooltip));
+        this.template.bind('mouseleave.popbox', this.proxy(this.hoverLeaveTooltip));
 
         this.template.hide().fadeIn(this.showFadeDuration);
         this.position();
@@ -204,7 +203,13 @@
 
     hoverLeaveTooltip: function () {
       this.hoveringOverTooltip = false;
-      this.el.trigger('mouseleave');
+      this.el.trigger('mouseleave.popbox');
+    },
+    destroy: function(){
+      this.reset();
+      this.el.unbind('.popbox');
+
+      Fidel.prototype.destroy.call(this);
     }
   });
 

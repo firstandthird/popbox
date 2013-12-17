@@ -1,3 +1,10 @@
+0.9.0 / 2013-12-17
+==================
+
+ * Merge pull request #11 from Belelros/master
+ * Adding destroy method
+ * Adding namespaced events so it's easier to unbind them
+
 
 0.8.1 / 2013-11-21 
 ==================
