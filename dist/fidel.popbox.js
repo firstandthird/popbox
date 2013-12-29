@@ -1,7 +1,7 @@
 
 /*!
  * popbox - Tooltip/Popover Library
- * v0.8.1
+ * v0.9.1
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2013
  * MIT License
@@ -46,8 +46,10 @@
     },
 
     reset: function () {
-      this.template.unbind('.popbox');
-      this.template.remove();
+      if (this.template){
+        this.template.unbind('.popbox');
+        this.template.remove();
+      }
     },
 
     show: function (e) {
