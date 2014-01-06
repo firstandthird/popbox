@@ -1,9 +1,9 @@
 
 /*!
  * popbox - Tooltip/Popover Library
- * v0.9.1
+ * v0.9.2
  * https://github.com/firstandthird/popbox
- * copyright First + Third 2013
+ * copyright First + Third 2014
  * MIT License
 */
 (function($) {
@@ -207,6 +207,15 @@
       this.hoveringOverTooltip = false;
       this.el.trigger('mouseleave.popbox');
     },
+
+    setText: function(text){
+      this.text = text;
+
+      if (this.open){
+        this.template.find('.text').text(text);
+      }
+    },
+
     destroy: function(){
       this.reset();
       this.el.unbind('.popbox');
