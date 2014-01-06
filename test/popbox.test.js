@@ -133,4 +133,18 @@ suite('popbox', function() {
     });
   });
 
+  suite('setText', function(){
+    test('normal update', function(){
+      tooltip.popbox();
+
+      tooltip.data('popbox').setText('New text');
+      assert.equal(tooltip.popbox('generateTemplate')[0].outerHTML, '<div class="popbox"><div class="text">New text</div></div>');
+    });
+    test('while opened update', function(){
+      tooltip.popbox();
+      tooltip.popbox('show');
+      tooltip.data('popbox').setText('New text');
+      assert.equal($('.text').text(),'New text');
+    });
+  });
 });
