@@ -1,7 +1,7 @@
 
 /*!
  * popbox - Tooltip/Popover Library
- * v0.9.2
+ * v0.10.0
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2014
  * MIT License
@@ -68,6 +68,7 @@
 
         this.template.bind('mouseenter.popbox', this.proxy(this.hoverTooltip));
         this.template.bind('mouseleave.popbox', this.proxy(this.hoverLeaveTooltip));
+        this.template.bind('click.popbox', this.proxy(this.popboxClick));
 
         this.template.hide().fadeIn(this.showFadeDuration);
         this.position();
@@ -214,6 +215,10 @@
       if (this.open){
         this.template.find('.text').text(text);
       }
+    },
+
+    popboxClick: function(e) {
+      this.emit('popboxClick');
     },
 
     destroy: function(){

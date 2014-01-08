@@ -1,4 +1,9 @@
 
+0.10.0 / 2014-01-08 
+==================
+
+  * feat: added popboxClick event when clicking on popbox
+
 0.9.2 / 2014-01-06 
 ==================
 
