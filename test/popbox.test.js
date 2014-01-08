@@ -147,4 +147,15 @@ suite('popbox', function() {
       assert.equal($('.text').text(),'New text');
     });
   });
+
+  suite('popboxClick', function() {
+    test('trigger event when popbox clicked', function(done) {
+      tooltip.popbox();
+      tooltip.on('popboxClick', function() {
+        done();
+      });
+      tooltip.popbox('show');
+      $('.popbox').click();
+    });
+  });
 });

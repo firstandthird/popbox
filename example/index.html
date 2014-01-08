@@ -65,6 +65,9 @@
       popboxes.on('hide', function() {
         logEvent('Hide triggerd');
       });
+      popboxes.on('popboxClick', function() {
+        logEvent('Popbox Click triggered');
+      });
 
       $('button[data-action="show"]').click(function() {
         $('.hover-popbox').popbox('show');
