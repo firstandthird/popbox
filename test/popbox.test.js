@@ -4,16 +4,19 @@ $.fn.popbox.defaults.hideFadeDuration = 10;
 suite('popbox', function() {
   var tooltip,
       tooltipTitle,
-      tooltipCustom;
+      tooltipCustom,
+      tooltipBlank;
 
   setup(function() {
     tooltip = $('.hover-popbox').clone();
     tooltipTitle = $('.hover-popbox-title').clone();
     tooltipCustom = $('.custom-popbox').clone();
+    tooltipBlank = $('.blank-popbox').clone();
 
     tooltip.removeData();
     tooltipTitle.removeData();
     tooltipCustom.removeData();
+    tooltipBlank.removeData();
 
     $('.popbox').remove();
   });
@@ -80,6 +83,15 @@ suite('popbox', function() {
 
       tooltip.popbox('show');
     });
+
+    test('don\'t show if blank', function() {
+      tooltipBlank.popbox();
+
+      tooltipBlank.mouseenter();
+
+      assert.equal(tooltipBlank.popbox('isOpen'), false);
+    });
+
   });
 
   suite('hide', function() {
