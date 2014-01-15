@@ -1,4 +1,10 @@
 
+0.10.1 / 2014-01-15 
+==================
+
+  * removed unneeded `/>` from example
+  * don't show empty popbox
+
 0.10.0 / 2014-01-08 
 ==================
 

@@ -1,7 +1,7 @@
 
 /*!
  * popbox - Tooltip/Popover Library
- * v0.10.0
+ * v0.10.1
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2014
  * MIT License
@@ -54,6 +54,10 @@
 
     show: function (e) {
       if(this.hoveringOverTooltip) return;
+      
+      if (!this.text) {
+        return;
+      }
 
       if(typeof e !== 'undefined' && this.forcedOpen) return;
 
