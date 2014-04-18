@@ -199,7 +199,7 @@
   $.declare('popbox', {
     defaults: {
       containerClass: 'popbox',
-      direction: 'down',
+      direction: 'smart',
       directionClasses: 'left left-edge up right right-edge down left-up right-up',
       directionOffset: 10,
       hideFadeDuration: 100,
@@ -313,38 +313,69 @@
       var elOffset = this.el.offset();
       var left, top;
       var right = 'auto';
+      var direction = this.direction;
+      var good = false;
+      var index = 0;
 
-      switch(this.direction) {
-        case 'left':
-          left = elOffset.left - this.template.outerWidth() - this.directionOffset;
-          top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
-          this.template.addClass('left');
-          break;
-        case 'up':
-          left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
-          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
-          this.template.addClass('up');
-          break;
-        case 'right':
-          left = elOffset.left + this.el.outerWidth() + this.directionOffset;
-          top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
-          this.template.addClass('right');
-          break;
-        case 'down':
-          left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
-          top = elOffset.top  + this.el.outerHeight() + this.directionOffset;
-          this.template.addClass('down');
-          break;
-        case 'left-up':
-          left = (elOffset.left) - (this.template.outerWidth() / 2);
-          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
-          this.template.addClass('left-up');
-          break;
-        case 'right-up':
-          left = (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2);
-          top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
-          this.template.addClass('right-up');
-          break;
+      // The order of these can be changed based ideal position
+      var positions = ['down', 'up', 'left', 'right', 'left-up', 'right-up', 'down']; //down is default if nothing fits
+
+      if(this.direction === 'smart') {
+        direction = positions[0];
+      }
+
+      while(!good) {
+        index++;
+
+        switch(direction) {
+          case 'left':
+            left = elOffset.left - this.template.outerWidth() - this.directionOffset;
+            top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
+            this.template.addClass('left');
+            break;
+          case 'up':
+            left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            this.template.addClass('up');
+            break;
+          case 'right':
+            left = elOffset.left + this.el.outerWidth() + this.directionOffset;
+            top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
+            this.template.addClass('right');
+            break;
+          case 'down':
+            left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
+            top = elOffset.top  + this.el.outerHeight() + this.directionOffset;
+            this.template.addClass('down');
+            break;
+          case 'left-up':
+            left = (elOffset.left) - (this.template.outerWidth() / 2);
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            this.template.addClass('left-up');
+            break;
+          case 'right-up':
+            left = (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2);
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            this.template.addClass('right-up');
+            break;
+        }
+
+        if(this.direction === 'smart') {
+          this.template.css({
+            left: left,
+            right: right,
+            top: top
+          });
+
+          if(this.isInViewport(this.template) || index === positions.length) {
+            good = true;
+          } else {
+            direction = positions[index];
+            this.template.removeClass(this.directionClasses);
+          }
+        } else {
+          good = true;
+        }
       }
 
       if(($(window).width() - (left + this.template.outerWidth())) < 0) {
@@ -359,7 +390,6 @@
       this.template.css({
         left: left,
         right: right,
-        top: top
       });
     },
 
@@ -419,6 +449,17 @@
       this.el.unbind('.popbox');
 
       Fidel.prototype.destroy.call(this);
+    },
+
+    isInViewport: function(el) {
+      var rect = el[0].getBoundingClientRect();
+
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= $(window).height() &&
+        rect.right <= $(window).width()
+      );
     }
   });
 

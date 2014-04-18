@@ -170,4 +170,20 @@ suite('popbox', function() {
       $('.popbox').click();
     });
   });
+
+  // Not sure of a good way to test changes in viewport
+  suite('smart position', function() {
+    test('should default to down', function() {
+      tooltip.popbox({
+        direction: 'smart'
+      });
+
+      tooltip.popbox('show');
+
+      setTimeout(function() {
+        assert.equal($('.popbox.down').length, 0);
+        done();
+      }, 100);
+    });
+  });
 });
