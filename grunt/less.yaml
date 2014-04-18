@@ -1,5 +1,6 @@
+options:
+  paths: 'bower_components/oban'
 styles:
-  options:
-    paths: 'bower_components/oban'
-  files:
-    'dist/popbox.css': 'less/default.less'
+  src:
+    - 'less/default.less'
+  dest: 'dist/<%= name %>.css'

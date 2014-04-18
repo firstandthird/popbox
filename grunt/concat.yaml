@@ -1,9 +1,9 @@
 options:
   banner: '<%= meta.banner %>'
-dist:
+lib:
   src:
     - 'lib/<%= name %>.js'
-  dest: 'dist/fidel.<%= name %>.js'
+  dest: 'dist/<%= name %>.bower.js'
 full:
   src:
     - 'dist/_bower.js'

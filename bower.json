@@ -5,9 +5,8 @@
   "homepage": "https://github.com/firstandthird/popbox",
   "license": "MIT",
   "copyright": "First + Third",
-  "main": "dist/fidel.popbox.js",
+  "main": "dist/popbox.bower.js",
   "dependencies": {
-    "fidel": "2.*"
   },
   "devDependencies": {
     "assert": "*",
