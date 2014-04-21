@@ -5,16 +5,24 @@
     @textColor: #fff,
     @borderRadius: 4px,
     @padding: 10px,
-    @arrowSize: 10px
+    @arrowSize: 10px,
+    @duration: 200ms
   ) {
   .popbox {
     background: @backgroundColor;
     color: @textColor;
     border-radius: @borderRadius;
     padding: @padding;
+    transition: all @duration ease;
+    opacity: 0;
+    transform: translate(0, 0);
 
     &.left {
       .oban-arrow-right(@backgroundColor, @arrowSize);
+
+      &.open {
+        transform: translate(5px, 0);
+      }
     }
 
     &.up, &.left-up, &.right-up {
@@ -22,6 +30,10 @@
       &.right-edge:after {
         left: auto;
         right: 25px;
+      }
+
+      &.open {
+        transform: translate(0, 5px);
       }
     }
 
@@ -34,6 +46,10 @@
         left: auto;
         right: 25px;
       }
+
+      &.open {
+        transform: translate(-5px, 0);
+      }
     }
 
     &.down {
@@ -45,11 +61,19 @@
         left: auto;
         right: 25px;
       }
+
+      &.open {
+        transform: translate(0, -5px);
+      }
     }
 
     .title {
       font-size: 20px;
       margin-bottom: 10px;
     }
+  }
+
+  &.open {
+    opacity: 1;
   }
 }
