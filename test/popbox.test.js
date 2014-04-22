@@ -101,10 +101,10 @@ suite('popbox', function() {
       tooltip.mouseenter();
       tooltip.mouseleave();
 
-      setTimeout(function() {
+      tooltip.one('hide', function() {
         assert.equal($('.popbox').length, 0);
         done();
-      }, 100);
+      });
     });
 
     test('hide on click', function(done) {
@@ -113,10 +113,10 @@ suite('popbox', function() {
       tooltip.popbox('toggle');
       tooltip.popbox('toggle');
 
-      setTimeout(function() {
+      tooltip.one('hide', function() {
         assert.equal($('.popbox').length, 0);
         done();
-      }, 100);
+      });
     });
 
     test('hide manually', function(done) {
@@ -125,10 +125,10 @@ suite('popbox', function() {
       tooltip.popbox('show');
       tooltip.popbox('hide');
 
-      setTimeout(function() {
+      tooltip.one('hide', function() {
         assert.equal($('.popbox').length, 0);
         done();
-      }, 100);
+      });
 
     });
 
