@@ -3,6 +3,12 @@
   color: #ffffff;
   border-radius: 4px;
   padding: 10px;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  opacity: 0;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 .popbox.left {
   position: relative;
@@ -15,11 +21,16 @@
 }
 .popbox.left:after {
   top: 50%;
-  margin-top: -10px;
-  right: -10px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(0, 0, 0, 0.8);
+  margin-top: -5px;
+  right: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+}
+.popbox.left.open {
+  -webkit-transform: translate(5px, 0);
+  -ms-transform: translate(5px, 0);
+  transform: translate(5px, 0);
 }
 .popbox.up,
 .popbox.left-up,
@@ -38,17 +49,24 @@
 .popbox.left-up:after,
 .popbox.right-up:after {
   left: 50%;
-  margin-left: -10px;
-  bottom: -10px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid rgba(0, 0, 0, 0.8);
+  margin-left: -5px;
+  bottom: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.8);
 }
 .popbox.up.right-edge:after,
 .popbox.left-up.right-edge:after,
 .popbox.right-up.right-edge:after {
   left: auto;
   right: 25px;
+}
+.popbox.up.open,
+.popbox.left-up.open,
+.popbox.right-up.open {
+  -webkit-transform: translate(0, 5px);
+  -ms-transform: translate(0, 5px);
+  transform: translate(0, 5px);
 }
 .popbox.right {
   position: relative;
@@ -61,11 +79,11 @@
 }
 .popbox.right:after {
   top: 50%;
-  margin-top: -10px;
-  left: -10px;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(0, 0, 0, 0.8);
+  margin-top: -5px;
+  left: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid rgba(0, 0, 0, 0.8);
 }
 .popbox.right.left-edge:after {
   left: 25px;
@@ -73,6 +91,11 @@
 .popbox.right.right-edge:after {
   left: auto;
   right: 25px;
+}
+.popbox.right.open {
+  -webkit-transform: translate(-5px, 0);
+  -ms-transform: translate(-5px, 0);
+  transform: translate(-5px, 0);
 }
 .popbox.down {
   position: relative;
@@ -85,11 +108,11 @@
 }
 .popbox.down:after {
   left: 50%;
-  margin-left: -10px;
-  top: -10px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid rgba(0, 0, 0, 0.8);
+  margin-left: -5px;
+  top: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.8);
 }
 .popbox.down.left-edge:after {
   left: 25px;
@@ -98,7 +121,15 @@
   left: auto;
   right: 25px;
 }
+.popbox.down.open {
+  -webkit-transform: translate(0, -5px);
+  -ms-transform: translate(0, -5px);
+  transform: translate(0, -5px);
+}
 .popbox .title {
   font-size: 20px;
   margin-bottom: 10px;
+}
+.open {
+  opacity: 1;
 }

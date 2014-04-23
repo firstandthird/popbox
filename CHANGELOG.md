@@ -1,4 +1,15 @@
 
+0.11.0 / 2014-04-23 
+==================
+
+  * shrank default arrow size
+  * Fixes issue with tests and transition + fixes popboxes not being removed from dom.
+  * Added nice animations
+  * Fixes display fot non-auto tips.
+  * Added smart positioning.
+  * Updated build scripts
+  * Fixed jquery path.
+
 0.10.1 / 2014-01-15 
 ==================
 

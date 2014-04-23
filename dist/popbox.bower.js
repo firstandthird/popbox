@@ -1,6 +1,6 @@
 /*!
  * popbox - Tooltip/Popover Library
- * v0.10.1
+ * v0.11.0
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2014
  * MIT License
@@ -12,8 +12,7 @@
       direction: 'smart',
       directionClasses: 'left left-edge up right right-edge down left-up right-up',
       directionOffset: 10,
-      hideFadeDuration: 100,
-      showFadeDuration: 50,
+      animOffset: 5,
       hideTimeout: 100,
       enableHover: true,
       clickToShow: true
@@ -73,8 +72,8 @@
         this.template.bind('mouseleave.popbox', this.proxy(this.hoverLeaveTooltip));
         this.template.bind('click.popbox', this.proxy(this.popboxClick));
 
-        this.template.hide().fadeIn(this.showFadeDuration);
         this.position();
+        this.template.addClass('open');
       }
 
       this.open = true;
@@ -93,11 +92,20 @@
       }
 
       this.hideTimer = setTimeout(this.proxy(function() {
-        this.template.fadeOut(this.hideFadeDuration, this.proxy(this.reset));
+        var transitionEvents = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
+
+        this.template.removeClass('open');
+
+        // $().one() can be a bit spotty with transition events. Better to manually unbind.
+        this.template.bind(transitionEvents, this.proxy(function() {
+          this.template.unbind(transitionEvents);
+          this.reset();
+          this.el.trigger('hide');
+        }));
 
         this.open = false;
         this.hoveringOverTooltip = false;
-        this.el.trigger('hide');
+        
       }), this.hideTimeout);
     },
 
@@ -139,33 +147,33 @@
 
         switch(direction) {
           case 'left':
-            left = elOffset.left - this.template.outerWidth() - this.directionOffset;
+            left = elOffset.left - this.template.outerWidth() - this.directionOffset - this.animOffset;
             top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
             this.template.addClass('left');
             break;
           case 'up':
             left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
-            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset - this.animOffset;
             this.template.addClass('up');
             break;
           case 'right':
-            left = elOffset.left + this.el.outerWidth() + this.directionOffset;
+            left = elOffset.left + this.el.outerWidth() + this.directionOffset + this.animOffset;
             top = (elOffset.top + this.el.outerHeight() / 2) - (this.template.outerHeight() / 2);
             this.template.addClass('right');
             break;
           case 'down':
             left = (elOffset.left + this.el.outerWidth() / 2) - (this.template.outerWidth() / 2);
-            top = elOffset.top  + this.el.outerHeight() + this.directionOffset;
+            top = elOffset.top  + this.el.outerHeight() + this.directionOffset + this.animOffset;
             this.template.addClass('down');
             break;
           case 'left-up':
             left = (elOffset.left) - (this.template.outerWidth() / 2);
-            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset - this.animOffset;
             this.template.addClass('left-up');
             break;
           case 'right-up':
             left = (elOffset.left + this.el.outerWidth()) - (this.template.outerWidth() / 2);
-            top = elOffset.top  - this.template.outerHeight() - this.directionOffset;
+            top = elOffset.top  - this.template.outerHeight() - this.directionOffset - this.animOffset;
             this.template.addClass('right-up');
             break;
         }
@@ -200,6 +208,7 @@
       this.template.css({
         left: left,
         right: right,
+        top: top
       });
     },
 
