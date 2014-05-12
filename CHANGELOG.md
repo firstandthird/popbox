@@ -1,4 +1,9 @@
 
+0.11.2 / 2014-05-12 
+==================
+
+  * fixed issue where hovering over tooltip caused it to never show up again
+
 0.11.1 / 2014-04-25 
 ==================
 
