@@ -1,4 +1,10 @@
 
+0.11.3 / 2014-08-20
+==================
+
+ * Merge pull request #17 from firstandthird/bug/hovering-quickly-breaks
+ * Fixed bug where popbox could be hidden if a users hovers too quickly.
+
 0.11.2 / 2014-05-12 
 ==================
 

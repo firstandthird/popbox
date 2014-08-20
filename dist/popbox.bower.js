@@ -1,6 +1,6 @@
 /*!
  * popbox - Tooltip/Popover Library
- * v0.11.2
+ * v0.11.3
  * https://github.com/firstandthird/popbox
  * copyright First + Third 2014
  * MIT License
@@ -28,6 +28,8 @@
       this.templateEl = this.el.data('popbox-el') || '';
       this.direction = this.el.data('popbox-direction') || this.direction;
       this.template = '';
+
+      this.transitionEvents = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
 
       this.attachEvents();
     },
@@ -63,8 +65,6 @@
         this.forcedOpen = true;
       }
 
-      clearTimeout(this.hideTimer);
-
       if(!this.open) {
         $('body').append(this.generateTemplate());
 
@@ -75,6 +75,9 @@
         this.position();
         this.template.addClass('open');
       }
+
+      clearTimeout(this.hideTimer);
+      this.template.unbind(this.transitionEvents);
 
       this.open = true;
       this.el.trigger('show');
@@ -92,13 +95,11 @@
       }
 
       this.hideTimer = setTimeout(this.proxy(function() {
-        var transitionEvents = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
-
         this.template.removeClass('open');
 
         // $().one() can be a bit spotty with transition events. Better to manually unbind.
-        this.template.bind(transitionEvents, this.proxy(function() {
-          this.template.unbind(transitionEvents);
+        this.template.bind(this.transitionEvents, this.proxy(function() {
+          this.template.unbind(this.transitionEvents);
           this.reset();
           this.el.trigger('hide');
           this.hoveringOverTooltip = false;
