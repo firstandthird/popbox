@@ -1,4 +1,10 @@
 
+0.11.4 / 2014-11-20
+==================
+
+  * Merge pull request #19 from firstandthird/bug/safari-animate
+  * Fixed safari transition bug.
+
 0.11.3 / 2014-08-20
 ==================
 
