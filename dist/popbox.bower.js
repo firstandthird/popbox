@@ -2,7 +2,7 @@
  * popbox - Tooltip/Popover Library
  * v0.11.4
  * https://github.com/firstandthird/popbox
- * copyright First + Third 2014
+ * copyright First + Third 2016
  * MIT License
 */
 (function($) {
@@ -15,7 +15,8 @@
       animOffset: 5,
       hideTimeout: 100,
       enableHover: true,
-      clickToShow: true
+      clickToShow: true,
+      isTouch: ('ontouchstart' in window)
     },
 
     init: function () {
@@ -27,6 +28,7 @@
       this.title = this.el.data('popbox-title') || '';
       this.templateEl = this.el.data('popbox-el') || '';
       this.direction = this.el.data('popbox-direction') || this.direction;
+      this.disableOnTouch = this.el.data('disable-touch');
       this.template = '';
 
       this.transitionEvents = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
@@ -39,9 +41,11 @@
     },
 
     attachEvents: function () {
-      if(this.enableHover) {
+      if(this.enableHover && !this.isTouch) {
         this.el.bind('mouseenter.popbox', this.proxy(this.show));
         this.el.bind('mouseleave.popbox', this.proxy(this.hide));
+      } else if(this.isTouch && !this.disableOnTouch) {
+        this.el.bind('click.popbox', this.proxy(this.toggle));
       }
     },
 
@@ -54,7 +58,7 @@
 
     show: function (e) {
       if(this.hoveringOverTooltip) return;
-      
+
       if (!this.text) {
         return;
       }
@@ -106,7 +110,7 @@
         }));
 
         this.open = false;
-        
+
       }), this.hideTimeout);
     },
 

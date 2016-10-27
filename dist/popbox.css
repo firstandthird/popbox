@@ -3,13 +3,11 @@
   color: #ffffff;
   border-radius: 4px;
   padding: 10px;
-  -webkit-transition: opacity, -webkit-transform;
+  transition: opacity, -webkit-transform;
   transition: opacity, transform;
-  -webkit-transition-duration: 200ms;
   transition-duration: 200ms;
   opacity: 0;
   -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
   transform: translate(0, 0);
 }
 .popbox.left {
@@ -31,7 +29,6 @@
 }
 .popbox.left.open {
   -webkit-transform: translate(5px, 0);
-  -ms-transform: translate(5px, 0);
   transform: translate(5px, 0);
 }
 .popbox.up,
@@ -67,7 +64,6 @@
 .popbox.left-up.open,
 .popbox.right-up.open {
   -webkit-transform: translate(0, 5px);
-  -ms-transform: translate(0, 5px);
   transform: translate(0, 5px);
 }
 .popbox.right {
@@ -96,7 +92,6 @@
 }
 .popbox.right.open {
   -webkit-transform: translate(-5px, 0);
-  -ms-transform: translate(-5px, 0);
   transform: translate(-5px, 0);
 }
 .popbox.down {
@@ -125,7 +120,6 @@
 }
 .popbox.down.open {
   -webkit-transform: translate(0, -5px);
-  -ms-transform: translate(0, -5px);
   transform: translate(0, -5px);
 }
 .popbox .title {
